@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+<!-- 内容 -->
+{% block content %}
+
+<div class="lyear-wrapper">
+  <section class="mt-5 pb-5">
+    <div class="container">
+
+      <div class="row">
+        <!-- 文章列表 -->
+        <div class="col-12">
+
+          <article class="lyear-arc">
+            <div class="lyear-arc-detail">
+              <h5 class="text-center mt-0 mb-3 pb-3">关于我-XieJava</h5>
+              <p class="text-center">信息系统项目管理师/高级通信工程师/网络信息安全工程师/码农/草根站长/终身学习者</p>
+              <p class="text-center">喜欢打鼓、看书、写代码、旅行</p>
+              <p class="text-center">本ishareblog博客基于Django搭建，源代码见 <a href="https://gitee.com/xiejava/ishareblog" target="_blank">https://gitee.com/xiejava/ishareblog</a></p>
+              <h6><strong>关注我</strong></h6>
+              <ul>
+                  {% for social_info in social_infos %}
+                      <li class="iconfont {{ social_info.icon }}"><a href="{{ social_info.href }}" target="_blank">{{ social_info.title }}</a></li>
+                  {% endfor %}
+              </ul>
+            </div>
+          </article>
+          
+        </div>
+        <!-- 内容 end -->
+        
+      </div>
+
+    </div>
+    <!-- end container -->
+  </section>
+</div>
+
+{% endblock %}
+<!-- 内容 end -->

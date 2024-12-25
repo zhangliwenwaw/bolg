@@ -1,0 +1,86 @@
+{% extends 'blog/base.html' %}
+<!-- 文章阅读 -->
+
+{% block content %}
+<div class="lyear-wrapper">
+  <section class="mt-5 pb-5">
+    <div class="container">
+
+      <div class="row">
+        <!-- 文章列表 -->
+        <div class="col-xl-8">
+          <!-- 内容 -->
+
+
+          <article class="lyear-arc">
+            <div class="arc-header">
+              <h2 class="arc-title"><a href="#">{{ post_obj.title }}</a></h2>
+              <ul class="arc-meta">
+                <li><i class="mdi mdi-calendar"></i> {{ post_obj.pubTime }}</li>
+                <li> {% for tag in post_obj.tags.all %}<a href="{% url 'index' %}?tag={{ tag.id }}">{{ tag.tag }}</a>&nbsp{% endfor %}</li>
+                <!--<li><i class="mdi mdi-comment-multiple-outline"></i> <a href="#">3 评论</a></li>-->
+                <li><i class="mdi mdi-heart-outline"></i> <a href="#">{{ post_obj.viewsCount }} 喜欢</a></li>
+              </ul>
+            </div>
+            
+            <div class="arc-preview">
+              <img src="images/blog/post-1.png" alt="" class="img-fluid rounded" />
+            </div>
+
+            <div class="lyear-arc-detail">
+               {{ html_content|safe }}
+            </div>
+
+          </article>
+
+
+
+            </div>
+        <!-- 内容 end -->
+
+        <!-- 侧边栏 -->
+        <div class="col-xl-4">
+          <div class="lyear-sidebar">
+            <!-- 热门文章 -->
+            <aside class="widget widget-hot-posts">
+              <div class="widget-title">热门文章</div>
+              <ul>
+                  {% for post in hot_posts %}
+                <li>
+                  <a href="{% url 'post_detail' id=post.id %}">{{ post.title }}</a> <span>{{ post.pubTime }}</span>
+                </li>
+                  {% endfor %}
+              </ul>
+            </aside>
+
+            <!-- 归档 -->
+            <aside class="widget">
+              <div class="widget-title">归档</div>
+              <ul>
+                  {% for post in post_grouped_by_year %}
+                      <li><a href="{% url 'index' %}?year={{ post.year|date:'Y' }}" >{% if year == post.year|date:'Y' %}<b>{{ post.year|date:'Y' }} 年 </b>{% else %}{{ post.year|date:'Y' }} 年{% endif %}</a> ({{ post.publication_count }})</li>
+                  {% endfor %}
+              </ul>
+            </aside>
+
+            <!-- 标签 -->
+            <aside class="widget widget-tag-cloud">
+              <div class="widget-title">标签 </div>
+              <div class="tag-cloud">
+                  {% for tag in tags %}
+                <a href="{% url 'index' %}?tag={{ tag.id }}" {% if tag_id == tag.id %}class="badge badge-primary"{% else %}class="badge badge-light"{% endif %}>{{ tag.tag }}</a>
+                  {% endfor %}
+              </div>
+            </aside>
+          </div>
+        </div>
+        <!-- 侧边栏 end -->
+      </div>
+
+    </div>
+    <!-- end container -->
+  </section>
+</div>
+
+{% endblock %}
+<!-- 内容 end -->

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>XieJava的博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="xiejava" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/materialdesignicons.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/markdown_highlighy.css' %}" />
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"JdyBT51UUKIm9A1e",ck:"JdyBT51UUKIm9A1e"})</script>
+</head>
+<body>
+<header class="lyear-header text-center" style="background-image:url(images/left-bg.jpg);">
+  <div class="lyear-header-container">
+    <div class="lyear-mask"></div>
+    <h1 class="lyear-blogger pt-lg-4 mb-0"><a href="{% url 'index' %}">XieJava的博客</a></h1>
+    <nav class="navbar navbar-expand-lg">
+    <a class="navbar-toggler" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="lyear-hamburger">
+        <div class="hamburger-inner"></div>
+      </div>
+    </a>
+    
+    <div id="navigation" class="collapse navbar-collapse flex-column">
+	  <div class="profile-section pt-3 pt-lg-0">
+	    <img class="profile-image mb-3 rounded-circle mx-auto" src="https://img9.doubanio.com/icon/ul70489051-4.jpg" width="120" height="120" alt="xiejava" >
+	    <div class="lyear-sentence mb-3">
+            记录最好的自己<br>
+            写是为了更好的思考，坚持写作，力争更好的思考。
+        </div>
+        <hr>
+	  </div>
+	  
+	  <ul class="navbar-nav flex-column text-center">
+	    <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">首页</a>
+	    </li>
+          {% for category in categories %}
+	    <li class="nav-item">
+	      <a class="nav-link" href="{% url 'index' %}?category={{ category.id }}">{{ category.title }}</a>
+	    </li>
+          {% endfor %}
+	    <li class="nav-item">
+	      <a class="nav-link" href="{% url 'about_me' %}">关于我</a>
+	    </li>
+	  </ul>
+
+	  <div class="my-2 my-md-3">
+        <form class="lyear-search-form form-inline justify-content-center pt-3">
+          <input type="text" id="search" name="search" class="form-control mr-md-1" placeholder="搜索关键词" />
+        </form>
+	  </div>
+
+      <div >
+          <br>
+          <img style="max-width:60%;height:auto;" src="https://xiejava1018.github.io/xiejavaimagesrc/images/fullbug微信公众号.jpg" alt="“fullbug”微信公众号" title="“fullbug”微信公众号">
+          <br>
+          <br>
+      </div>
+      <div class="p-3">
+          <div  class="copyright text-center pb-3">© 2019. XieJava的博客. All rights reserved.</div>
+      </div>
+
+      <!--51la统计-->
+       <div class="p-3">
+        <!--<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JdyBT51UUKIm9A1e/quote.js?theme=#F1F1F1,#979797,#999999,#ECECEC,#3D3D3D,#FFFFFF,12&col=true&f=12&badge=text&text=center"></script>-->
+        <a target="_blank" title="51la网站统计" href="https://v6.51.la/land/JdyBT51UUKIm9A1e"><img src="https://sdk.51.la/icon/2-4.png"></a>
+       </div>
+      <!--51la统计end-->
+
+    </div>
+
+  </nav>
+
+  </div>
+</header>
+
+<!-- 内容 -->
+{% block content %}
+<!-- 默认内容 -->
+{% endblock %}
+<!-- 内容 end -->
+
+
+<script type="text/javascript" src="{% static 'blog/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'blog/js/jquery.nicescroll.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'blog/js/main.min.js' %}"></script>
+</body>
+</html>
